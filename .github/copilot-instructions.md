@@ -1,52 +1,37 @@
 <!--
 Kort, taakgerichte instructies voor AI-codeagents die in deze repo werken.
-Deze file is bedoeld om een agent snel productief te maken: welke bestanden te openen,
-welke ontdekkingsstappen te volgen en welke repo-specifieke gewoonten te respecteren.
+Dit is een statische HTML/CSS-site – geen build tools, dependencies of complex architecture.
+Focus op inhoud en styling aanpassingen.
 -->
 
 # Copilot / AI-agent richtlijnen
 
-- **Doel:** Deze repository is momenteel zeer minimaal (alleen [README.md](README.md)).
-  Beoordeel eerst of er überhaupt broncode of build-configuratie aanwezig is.
+## 📋 Project overzicht
+**verbose-fiesta** is een eenvoudige one-page profielsite voor Bram Verstraten (Backend Developer).
+- **Taal/Stack:** Plain HTML5 + CSS3 (geen build tools, frameworks of dependencies)
+- **Bestanden:** `index.html` (inhoud), `styles.css` (styling)
+- **Doelgroep:** Portfolio/CV-site
 
-- **Snelstart ontdekking:**
-  - Zoek naar project-manifesten: `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Makefile`.
-  - Zoek naar mappen `src/`, `app/`, `cmd/`, of `pkg/` en naar testmappen `tests/` of `__tests__/`.
-  - Commando-voorbeeld (lokale sessie):
-    - `rg -n --hidden "package.json|pyproject.toml|Cargo.toml|go.mod|Makefile|src/|tests/" || true`
+## 🚀 Lokaal testen
+```bash
+python3 -m http.server 8000
+# open http://localhost:8000 in je browser
+```
+Geen build-stap nodig. Wijzigingen verschijnen onmiddellijk na refresh.
 
-- **Big picture & architectuur (hoe te bepalen):**
-  - Als er een `package.json` is: kijk naar `scripts` en `main`/`module` velden om entrypoints en test-commands te vinden.
-  - Voor Python: als er `pyproject.toml` of `requirements.txt` is, controleer `tool.poetry` of `build-system` secties.
-  - Als de repo geen manifests heeft, rapporteer dat en vraag naar de beoogde taal/stack.
+## 🏗️ Architectuur
+- **HTML structuur:** `<header>` (avatar + intro) → `<main>` met `.card` secties (Over mij, Technologieën, Samenvatting, Ervaring)
+- **Styling:** CSS custom properties (`:root` variabelen) voor kleurenschema; minified opmaak
+- **Responsive:** Mobile breakpoint op `560px` (flexbox aanpassingen)
+- **Externe content:** GitHub avatar URL, links naar vostools.be & vulpp.be
 
-- **Project-specifieke conventies (ontdekt):**
-  - Huidige snapshot bevat alleen [README.md](README.md). Er zijn geen project-specifieke codeconventies om te volgen.
-  - Als je componenten toevoegt, documenteer ze kort in de README en update deze instructiefile.
+## 📝 Wijzigingen guidelines
+1. **Inhoud:** Update secties in `index.html` (h2-titels, p-teksten, li-items)
+2. **Styling:** CSS-variabelen in `:root` wijzigen voor kleur/thema; media-query voor mobile aanpassen
+3. **Links:** Controleer `href` en `rel="noreferrer"` bij externe verwijzingen
+4. **Commits:** Korte boodschappen, bijv. "Update skills section" of "Adjust mobile padding"
 
-- **Ontwikkel- en testworkflows:**
-  - Gebruik beschikbare manifest-scripts (npm/poetry/cargo/go) als primaire commands.
-  - Als er geen scripts zijn, stel voorstelcommando's voor (bijv. `npm init` / `python -m venv .venv`), maar wacht op bevestiging voordat je veranderingen pusht.
-
-- **Integratiepunten & afhankelijkheden:**
-  - Zoek naar CI/CD config: `.github/workflows/`, `.gitlab-ci.yml`, `Dockerfile`.
-  - Als je externe services verwacht, vermeld dat de agent moet vragen naar API-keys/credentials en nooit secrets in de repo te plaatsen.
-
-- **Wanneer wijzigingen committen:**
-  - Maak kleine, gefocuste commits met duidelijke boodschappen.
-  - Voeg tests of minimaal een eenvoudige sanity-check toe bij functionele wijzigingen.
-  - Push of open PRs alleen na expliciete bevestiging van een menselijke reviewer.
-
-- **Melding van ontbrekende informatie:**
-  - Als kerninformatie ontbreekt (taal, build command, test command), voeg dan een kort `ISSUE.md` voorstel toe of vraag de gebruiker direct.
-
-- **Voorbeelden (concrete hints):**
-  - "Als je `package.json` vindt met `scripts.test` — run `npm test` lokaal en rapporteer failures." 
-  - "Als `pyproject.toml` aanwezig is — zoek `tool.poetry.scripts` of `entry-points` voor CLI entrypoints."
-
-- **Samenvoegregels (merge guidance voor deze file):**
-  - Als er al een `.github/copilot-instructions.md` bestaat, behoud bestaande secties die specifieke commando's of secrets-policy noemen.
-  - Voeg nieuwe ontdekkingen toe als korte bullets; houd file compact (20–50 regels).
-
----
-_Vraag_: wil je dat ik testscripts of detectiestappen (bijv. `detect-language.sh`) toevoeg om toekomstige agents automatisch te laten detecteren welke stack gebruikt wordt?
+## ⚠️ Opmerkingen
+- **Geen testframework** – visuele verificatie is primair (browser preview)
+- **Git-based preview:** GitHub Pages kan direct vanuit `main` deployen (geen build config nodig)
+- **Taalvoorkeur:** Content is Nederlands; zorg voor consistentie in nieuwe tekst
