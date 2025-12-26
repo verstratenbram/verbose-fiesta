@@ -1,4 +1,4 @@
-# verbose-fiesta
+# verbose-fiesta (site)
 
 Kleine repository met een simpele one-page profielsite voor Bram Verstraten.
 
@@ -16,4 +16,3 @@ python3 -m http.server 8000
 ```
 
 Wil je inhoud of styling aanpassen, open `index.html` en `styles.css`.
-# verbose-fiesta
